@@ -1,0 +1,57 @@
+// Simple hangman game
+slet secret = "python"
+slet misses = 0
+slet guessed = ""
+
+func tostart() ((
+    tout("Welcome to Hangman!")
+    tout("Guess the word one letter at a time.")
+    tout("You have 6 wrong guesses.")
+    rvoid
+))
+
+func ptstart() ((
+    slet display = ""
+    slet letter = ""
+    slet guess = ""
+
+    for ch in secret ((
+        if ch in guessed ((
+            slet display = display + ch
+        )) els ((
+            slet display = display + "_"
+        ))
+    ))
+
+    if misses >= 6 ((
+        tout("You lost. The word was " + secret)
+        rvoid
+    ))
+
+    if "_" not in display ((
+        tout("You won! The word was " + secret)
+        rvoid
+    ))
+
+    tout("Current word: " + display)
+    slet guess = gin("Guess a letter: ")
+
+    if guess in guessed ((
+        tout("You already guessed that one.")
+        rvoid
+    ))
+
+    slet guessed = guessed + guess
+
+    if guess not in secret ((
+        slet misses = misses + 1
+        tout("Wrong! " + str(6 - misses) + " guesses left.")
+    )) els ((
+        tout("Good guess!")
+    ))
+
+    if misses >= 6 ((
+        tout("Game over. The word was " + secret)
+        rvoid
+    ))
+))
