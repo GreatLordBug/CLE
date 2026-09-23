@@ -1,0 +1,35 @@
+//comments use '//'
+***docstrings use 
+three asterisks***
+svar sixty = 60  // prints ("sixty = 60")
+slet seventy = 70 // prints nothing
+func greatmom() ((
+    rstr "great mom"
+))
+func greatdad() ((
+    rnum 1
+))
+func greatlist() ((
+    rlist [4000, 7600]
+))
+func tostart() ((
+    tout("hi")
+    rvoid
+))
+func ptstart() ((
+    tout(greatdad())
+    if gin(greatmom()) == "400"((
+        tout greatmom()
+    )) lif gin(greatdad()) == "string" ((
+    )) els ((
+        for i in range(500) ((
+            slet j = greatlist()[i]
+            tout(j)
+            if j == 7600 ((
+                brk
+            )) els ((
+                con
+            ))
+        ))
+    ))
+))
